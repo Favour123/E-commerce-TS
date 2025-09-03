@@ -1,0 +1,20 @@
+node_modules/
+# Node modules directory
+.DS_Store
+# macOS system files
+.env
+# Environment variables file
+# Ignore environment variables file
+dist
+# Compiled output directory
+build
+# Compiled output directory
+coverage
+# Test coverage directory
+.vscode
+# Visual Studio Code settings
+.idea   
+# JetBrains IDE settings
+npm-debug.log
+# NPM debug log
+yarn-debug.log
