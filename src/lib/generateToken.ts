@@ -5,11 +5,6 @@ import { Request, Response } from "express";
 const SECRET_KEY = process.env.SECRET_KEY;
 
 
-export const generateToken = (payload: JwtPayload): string => {
-  return jwt.sign(payload, SECRET_KEY!, { expiresIn: "7d" }); // shorter expiry
-};
-
-
 export const generateTokenAndSetCookie = (payload: JwtPayload, res: Response) => {
   const token = jwt.sign(payload, SECRET_KEY!, { expiresIn: "15d" });
 

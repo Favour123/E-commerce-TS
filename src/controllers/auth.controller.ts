@@ -1,6 +1,6 @@
 import UserModel from "@model/user.model";
 import { Request, Response } from "express";
-import { ApiResponse, IUser, Params } from "../types/user";
+import { ApiResponse, IUser } from "../types/user";
 import bcrypt from "bcrypt";
 import { generateTokenAndSetCookie } from "@lib/generateToken";
 
