@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import ProductModel from "@model/products.model";
-import { ApiResponse, Params } from "../types/user";
+import { ApiResponse, IUser, Params } from "../types/user";
 import { Types } from "mongoose";
-
+export interface AuthRequest extends Request {
+   user?: IUser; // now req.user will be the full user object
+}
 /**
  * ✅ Like a product
  */

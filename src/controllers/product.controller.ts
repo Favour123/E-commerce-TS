@@ -28,7 +28,7 @@ export const getAllProducts = async (req: Request, res: Response<ApiResponse<any
 };
 
 
-export const getSingleProductById = async (req: Request<Params>, res: Response<ApiResponse<any>>) => {
+export const getSingleProductById = async (req: Request<Params,{}, ProductType>, res: Response<ApiResponse<any>>) => {
   try {
     const { id } = req.params;
     const ProductId = await ProductModel.findById(id);
@@ -52,7 +52,7 @@ export const getSingleProductById = async (req: Request<Params>, res: Response<A
 };
 
 
-export const AddNewProduct = async (req: Request, res: Response<ApiResponse<any>>) => {
+export const AddNewProduct = async (req: Request<{},{}, ProductType>, res: Response<ApiResponse<any>>) => {
   try {
     const { name, description, price, instock, category } = req.body;
 
@@ -102,7 +102,7 @@ export const AddNewProduct = async (req: Request, res: Response<ApiResponse<any>
 };
 
 
-export const UpdateSIngleProductById = async (req: Request<Params>, res: Response<ApiResponse<any>>) => {
+export const UpdateSIngleProductById = async (req: Request<Params,{}, ProductType>, res: Response<ApiResponse<any>>) => {
   try {
     const { id } = req.params;
     const { name, description, price, instock, category } = req.body;
@@ -146,7 +146,7 @@ export const UpdateSIngleProductById = async (req: Request<Params>, res: Respons
   }
 };
 
-export const DeleteSingleProductById = async (req: Request<Params>, res: Response<ApiResponse<any>>) => {
+export const DeleteSingleProductById = async (req: Request<Params,{}, ProductType>, res: Response<ApiResponse<any>>) => {
   try {
     const { id } = req.params;
     if (!id) {

@@ -1,14 +1,17 @@
-import { AddNewProduct, DeleteSingleBookById, getAllProducts, UpdateSIngleProductById,getSingleProductById } from "controllers/product.controller";
+import { AddNewProduct, DeleteSingleProductById, getAllProducts, UpdateSIngleProductById,getSingleProductById, searchProducts } from "controllers/product.controller";
 import { Router } from "express";
-import { upload } from "../middleware/image.middleware";
+import { isAdmin } from "../middleware/admin.middleware";
+import uploader from "../middleware/image.middleware";
 
 const router:Router = Router();
 
-router.post("/product/add",upload.single("image"), AddNewProduct);
-router.get("/product/:id",getSingleProductById);
-router.get("/products",getAllProducts );
-router.put("/product/update/:id",upload.single("image"),UpdateSIngleProductById );
-router.delete("/product/delete/:id", DeleteSingleBookById);
+router.post("/add",isAdmin,uploader.single("image"), AddNewProduct);
+router.get("/:id",isAdmin,uploader.single("image"),getSingleProductById);
+router.get ("/search/",isAdmin,uploader.single("image"),searchProducts)
+router.get("/products",isAdmin,uploader.single("image"),getAllProducts );
+router.put("/update/:id",isAdmin,uploader.single("image"), UpdateSIngleProductById );
+router.delete("/delete/:id",isAdmin,DeleteSingleProductById);
 
 export default router;
+
 

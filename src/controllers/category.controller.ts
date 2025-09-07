@@ -22,7 +22,7 @@ export const getAllCategory = async (req: Request<{}, {}, ProductCategory>, res:
       });
    }
 };
-export const getSingleIdCategory = async (req: Request<Params, {}, {}, ProductCategory>, res: Response<ApiResponse<any>>) => {
+export const getSingleIdCategory = async (req: Request<{id:string}, {}, {}, ProductCategory>, res: Response<ApiResponse<any>>) => {
    try {
       const { id } = req.params;
       const categories = await Category.findById(id);
@@ -82,45 +82,44 @@ export const updateCategoryById = async (req: Request<Params, {}, ProductCategor
             message: "All fields are required",
          });
       }
-        const updatedCategory = await Category.findByIdAndUpdate(id, { name, description }, { new: true, runValidators: true });
-        if (!updatedCategory) {
+      const updatedCategory = await Category.findByIdAndUpdate(id, { name, description }, { new: true, runValidators: true });
+      if (!updatedCategory) {
          return res.status(404).json({
             success: false,
             message: "Category not found",
          });
       }
-        res.status(200).json({
-                success: true,
-                message: "Category updated successfully",
-                data: updatedCategory,
-             });
-   }
-   catch(error:any){
+      res.status(200).json({
+         success: true,
+         message: "Category updated successfully",
+         data: updatedCategory,
+      });
+   } catch (error: any) {
       res.status(500).json({
          success: false,
          message: "internal error",
-      });  
+      });
    }
 };
 export const deleteCategoryById = async (req: Request<Params, {}, {}>, res: Response<ApiResponse<any>>) => {
    try {
       const { id } = req.params;
-        const deletedCategory = await Category.findByIdAndDelete(id);
-        if (!deletedCategory) {
+      const deletedCategory = await Category.findByIdAndDelete(id);
+      if (!deletedCategory) {
          return res.status(404).json({
             success: false,
-                message: "Category not found",
-                });
-        }
-        res.status(200).json({
-                success: true,
-                message: "Category deleted successfully",
-                data: deletedCategory,
-             });
-   } catch(error:any){
+            message: "Category not found",
+         });
+      }
+      res.status(200).json({
+         success: true,
+         message: "Category deleted successfully",
+         data: deletedCategory,
+      });
+   } catch (error: any) {
       res.status(500).json({
          success: false,
          message: "internal error",
-      });  
+      });
    }
 };

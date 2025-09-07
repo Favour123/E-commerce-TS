@@ -16,7 +16,7 @@ export interface JwtPayload {
 }
 
 export interface Params {
-   id: string;
+   id?: string;
 }
 
 export interface Query {
@@ -33,7 +33,7 @@ export interface ApiResponse<T> {
 export interface ProductType {
    name: string;
    description: string;
-   category: Types.ObjectId;
+   category: ProductCategory[];
    reviews: [
       {
          user: Types.ObjectId; // reference to User
@@ -69,11 +69,6 @@ export interface CardID {
    status: string;
    paymentMethod: string;
    shippingAddress: string;
-}
-
-export interface ProductImage {
-   url: string;
-   publicId: string;
 }
 
 export interface ICart {

@@ -40,7 +40,7 @@ export const authenticate = async (
         .json({ success: false, message: "User not found" });
     }
 
-    req.user = user; // ✅ fully typed IUser document
+    req.user = user; 
     next();
   } catch (error) {
     res
