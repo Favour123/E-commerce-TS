@@ -33,7 +33,7 @@ export interface ApiResponse<T> {
 export interface ProductType {
    name: string;
    description: string;
-   category: ProductCategory[];
+   category: Types.ObjectId;
    reviews: [
       {
          user: Types.ObjectId; // reference to User

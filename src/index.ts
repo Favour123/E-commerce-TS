@@ -1,12 +1,13 @@
 import express,{Application} from 'express';
 import  connectDB  from '@database/db';
 import dotenv from 'dotenv';
+dotenv.config();
 import cookieParser from "cookie-parser";
 import { logger} from '@middleware/logger';
 import userRoutes from '@routes/auth.routes';
 import productRoutes from '@routes/product.routes';
 import cartRoutes from '@routes/cart.routes';
-dotenv.config();  
+  
 const app: Application = express();
 
 //mongoose connection
